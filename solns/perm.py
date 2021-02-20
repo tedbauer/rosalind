@@ -1,7 +1,5 @@
 n = int(input())
 
-
-
 def perms(nums):
     if len(nums) == 0:
         return [[]]
@@ -15,7 +13,10 @@ def perms(nums):
                 res.append([elem] + p)
         return res
 
-res = perms(set([i for i in range(1, n+1)]))
+
+positives = set([i for i in range(1, n+1)])
+negatives = set([i for i in range(-1, -(n+1), -1)])
+res = perms(positives.union(negatives))
 print(len(res))
 for perm in res:
     print (" ".join(list(map(lambda x: str(x), perm))))
